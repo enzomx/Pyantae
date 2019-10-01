@@ -1,0 +1,17 @@
+h1 {
+    color: #336699;
+}
+
+p {
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    background-color: black
+}
+
+.fotocarro
+    {
+        width: 350px;
+        height: 200px;
+    }

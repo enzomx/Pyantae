@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<main role="main">
+        <div class="album py-5 bg-light" id="currentinventory">
+                <div class="container">
+
+
+                <div class="container-fluid">
+                        <div class="container">
+                                <div class="row">
+                                  <div class="col-sm">
+                                        <img src="{{ plant.foto }}" width="550" height="330">
+                                    </div>
+                                  <div class="col-sm">
+                                        <b><h1>{{ plant.plant_name }}</h1></b>
+
+                                        <p class="card-text">Humedad:<b>{{ plant.plant_hum }}</p></b>
+                                        <p class="card-text">Temperatura:<b>{{ plant.plant_temp }}</p></b>
+                                        <p class="card-text">Heat Index:<b>{{ plant.plant_hi }}</p></b>
+                                        <p class="card-text">Lumenes:<b>{{ plant.plant_light }}</p></b>
+                                        <p class="card-text">Estado:<b>{{ plant.plant_status }}</p></b>
+
+                    {% endif %}
+
+                                  </div>
+
+                                </div>
+                              </div>
+                    
+
+
+
+
+                </div>
+                </div>
+        </div>
+</main>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+              
+              <main role="main">
+              
+                <section class="jumbotron text-center">
+                  <div class="container">
+                    <h1 class="jumbotron-heading">Pyantae</h1>
+                    <p class="lead text-muted">Un lenguaje común entre plantas y humanos basado en python.</p>
+                    <p>
+                      <a href="#currentinventory" class="btn btn-primary my-2">See current status</a>
+                      <a href="#" class="btn btn-secondary my-2">View statics</a>
+                    </p>
+                  </div>
+                </section>
+              
+                <div class="album py-5 bg-dark" id="currentinventory">
+                  <div class="container">
+                    
+
+                    <div class="row">
+                    {% for plant in plants %}
+                      <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                          <a href="/{{plant.id}}/">
+                          <img src="{{ plant.foto }}" class="fotocarro">
+                          </a>
+                          <div class="card-body">
+                              <b><p class="card-text">{{ plant.plant_name }}</p></b>
+                              <p class="card-text">Humedad:<b>{{ plant.plant_hum }}</p></b>
+                              <p class="card-text">Temperatura:<b>{{ plant.plant_temp }}</p></b>
+                              <p class="card-text">Heat Index:<b>{{ plant.plant_hi }}</p></b>
+                              <p class="card-text">Lumenes:<b>{{ plant.plant_light }}</p></b>
+                              <p class="card-text">Estado:<b>{{ plant.plant_status }}</p></b>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group"><a href="/{{plant.id}}/">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">More...</button></a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Compare</button>
+                              </div>
+
+
+                            </div>                        
+                          </div>
+                          
+                        </div>
+
+                      </div>
+                      {% endfor %}
+                      
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              
+
+</div>
+              </main>
+              {% endblock %}
