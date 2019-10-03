@@ -9,7 +9,7 @@ def index(request):
     form = PlantForm()
     return render(request, 'index.html', {'plants' : plants, 'form' : form})
 
-def show(request, auto_id):
+def show(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     return render(request, 'show.html', {'plant' : plant})
 
