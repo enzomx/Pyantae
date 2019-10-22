@@ -8,6 +8,8 @@ p {
 }
 body {
     background-color: black
+    margin-top:100px;
+
 }
 
 .fotocarro
@@ -15,3 +17,11 @@ body {
         width: 350px;
         height: 200px;
     }
+
+
+#cabecera {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 10;
+      }

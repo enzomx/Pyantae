@@ -8,20 +8,83 @@
 
 
                 <div class="container-fluid">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                                        <b><h1>{{ plant.plant_name }}</h1></b>
+                                <div class="btn-toolbar mb-2 mb-md-0">
+                                  <div class="btn-group mr-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Compartir</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+                                  </div>
+                                  <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                    <span data-feather="calendar"></span>
+                                    Semana
+                                  </button>
+                                </div>
+                              </div>
                         <div class="container">
                                 <div class="row">
                                   <div class="col-sm">
-                                        <img src="{{ plant.foto }}" width="550" height="330">
+                                        <img src="{{ plant.foto }}" width="550" height="330" class="img-thumbnail">
                                     </div>
                                   <div class="col-sm">
-                                        <b><h1>{{ plant.plant_name }}</h1></b>
 
-                                        <p class="card-text">Humedad:<b>{{ plant.plant_hum }}</p></b>
-                                        <p class="card-text">Temperatura:<b>{{ plant.plant_temp }}</p></b>
-                                        <p class="card-text">Heat Index:<b>{{ plant.plant_hi }}</p></b>
-                                        <p class="card-text">Lumenes:<b>{{ plant.plant_light }}</p></b>
-                                        <p class="card-text">Estado:<b>{{ plant.plant_status }}</p></b>
+                                        <table class="table table-hover">
+                                                <thead>
+                                                  <tr>
+      
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row">Humedad:</th>
+                                                    <td>{{ plant_last.plant_hum }}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row">Temperatura:</th>
+                                                    <td>{{ plant_last.plant_temp }}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row">Indice de calor:</th>
+                                                    <td>{{ plant_last.plant_hi }}</td>
+                                                  </tr>
+                                                  <tr>
+                                                        <th scope="row">Lumenes:</th>
+                                                        <td>{{ plant_last.plant_light }}</td>
+                                                  </tr>
 
+
+                                                <tr></tr>
+                                                {%  if plant_last.plant_status == "Despierta"  %}
+
+                                                <tr class="table-success">
+                                                
+                                                {%  else  %}
+                                                
+                                                  {%  if plant_last.plant_status == "Dormida"  %}
+                                                  
+                                                    <tr class="table-dark">
+                                                      
+                                                    {%  else  %}
+                                                    
+                                                      {%  if plant_last.plant_status == "Sedienta" %}
+                                                      <audio id="Player" autoplay>
+                                                          <source src="/media/agua.mp3" type="audio/mpeg"/>
+                                                     </audio>
+                                                        <tr class="table-warning">
+          
+                                                        
+                                                      {% endif %}
+                                                  {% endif %}
+                                              {% endif %}
+                                                
+                                                    
+                                                
+                                                <th scope="row">Estado:</th>
+                                                <td>{{ plant_last.plant_status }}</td>
+                                          </tr>
+
+                                </tbody>
+                        </table>
 
                                   </div>
 
@@ -29,11 +92,25 @@
                               </div>
                     
 
+                        <div class="container">
+                                <div class="container-fluid">
+                                        <div class="container" align="center">
+                                                <img src="/generargrafico/{{ plant.id }}"/>
+                                        </div>
+                                </div>
+                        </div>
 
 
+                        
+                        
+                        <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="809" height="341" style="display: block; width: 809px; height: 341px;"></canvas>
 
                 </div>
                 </div>
         </div>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
 {% endblock %}

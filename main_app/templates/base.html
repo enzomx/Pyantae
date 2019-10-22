@@ -5,20 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}" />
+
     <title>Pyantae- {{ plant.plant_name }}</title>
+
+    
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      </style>
 </head>
 <body>
                 <header>
-        
-                    <div class="navbar navbar-dark bg-dark shadow-sm">
+                    <div class="cabecera navbar navbar-fixed-top navbar-dark bg-light shadow-sm">
                     <div class="container d-flex justify-content-between">
-                        <a href="#" class="navbar-brand d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                        <strong>Pyantae</strong>
+                        <a href="/" class="navbar-brand d-flex align-items-center">
+                          <img src="{% static 'arbol.png' %}" width="20" height="20">
+                        <font color=#336699><strong>Pyantae</strong></font>
                         </a>
+                      </div>
+                    </div>
 
-                    </div>
-                    </div>
                 </header>
 
                 <main role="main">
@@ -31,9 +49,9 @@
               <footer class="text-muted">
                 <div class="container">
                   <p class="float-right">
-                    <a href="#">Back to top</a>
+                    <a href="#">Regresar...</a>
                   </p>
-                  <p>Pyantae © All rights freeserved!.</p>
+                
                   
                 </div>
               </footer>

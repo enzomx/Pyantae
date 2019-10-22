@@ -7,37 +7,92 @@
               
                 <section class="jumbotron text-center">
                   <div class="container">
-                    <h1 class="jumbotron-heading">Pyantae</h1>
+                    <h1 class="jumbotron-heading"><img src="{% static 'arbol.png' %}" width="100" height="100">
+                      Pyantae</h1>
                     <p class="lead text-muted">Un lenguaje común entre plantas y humanos basado en python.</p>
                     <p>
-                      <a href="#currentinventory" class="btn btn-primary my-2">See current status</a>
-                      <a href="#" class="btn btn-secondary my-2">View statics</a>
+                      <a href="#plantas" class="btn btn-primary my-2" color="#239404">Ver estado actual</a>
+                      <a href="#" class="btn btn-secondary my-2">Ver estadisticas</a>
                     </p>
                   </div>
                 </section>
               
-                <div class="album py-5 bg-dark" id="currentinventory">
+                <div class="album py-5 bg-dark" id="plantas">
                   <div class="container">
-                    
-
+                      
                     <div class="row">
-                    {% for plant in plants %}
+                        
+                        {% for plant, data in all %}
+
                       <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
                           <a href="/{{plant.id}}/">
-                          <img src="{{ plant.foto }}" class="fotocarro">
+                          <img src="{{ plant.foto }}" class="fotocarro img-thumbnail">
                           </a>
                           <div class="card-body">
                               <b><p class="card-text">{{ plant.plant_name }}</p></b>
-                              <p class="card-text">Humedad:<b>{{ plant.plant_hum }}</p></b>
-                              <p class="card-text">Temperatura:<b>{{ plant.plant_temp }}</p></b>
-                              <p class="card-text">Heat Index:<b>{{ plant.plant_hi }}</p></b>
-                              <p class="card-text">Lumens:<b>{{ plant.plant_light }}</p></b>
-                              <p class="card-text">Estado:<b>{{ plant.plant_status }}</p></b>
+
+                              <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Humedad:</th>
+                                      <td>{{ data.plant_hum }}</td>  
+                                      {{ endwith }}
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Temperatura:</th>
+                                      <td>{{ data.plant_temp }}</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Indice de calor:</th>
+                                      <td>{{ data.plant_hi }}</td>
+                                    </tr>
+                                    <tr>
+                                          <th scope="row">Lumenes:</th>
+                                          <td>{{ data.plant_light }}</td>
+                                    </tr>
+
+
+                                  <tr></tr>
+                                    {%  if data.plant_status == "Despierta"  %}
+
+                                      <tr class="table-success">
+                                      
+                                      {%  else  %}
+                                      
+                                        {%  if data.plant_status == "Dormida"  %}
+                                        
+                                          <tr class="table-dark">
+                                            
+                                          {%  else  %}
+                                          
+                                            {%  if data.plant_status == "Sedienta"  %}
+                                            
+                                              <tr class="table-warning">
+
+                                              
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                      
+                                          
+                                    
+                                  <th scope="row">Estado:</th>
+                                  <td>{{ data.plant_status }}</td>
+                                    </tr>
+
+                                  </tbody>
+                              </table>
+
                             <div class="d-flex justify-content-between align-items-center">
                               <div class="btn-group"><a href="/{{plant.id}}/">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">More...</button></a>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Compare</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver mas...</button></a>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Comparar</button>
                               </div>
 
 
@@ -48,7 +103,7 @@
 
                       </div>
                       {% endfor %}
-                      
+                     
                       
                       
                     </div>
@@ -56,6 +111,5 @@
                 </div>
               
 
-</div>
               </main>
               {% endblock %}
